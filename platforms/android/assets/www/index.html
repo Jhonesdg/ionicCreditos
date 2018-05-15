@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ngstorage/ngStorage.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+  </head>
+  <body ng-app="lectorQR" class="platform-android platform-cordova platform-webview">
+
+    <ion-pane>
+      
+      <ion-content style="text-align: center" ng-controller="lectorController">
+      <div class="bar bar-header" style="position: inherit;" ng-show="logged == true">
+          <button style="position: absolute; right: 0px;" class="button " ng-click="logout()">Cerrar sesión</button>
+        </div>
+      <div ng-show="logged == false">
+         
+        <div class="list  " style="margin-top: 20vh">
+          <img src="img/kme-k.png">
+
+          <label class="item item-input " style="margin-top: 15vh">
+              <input type="text" placeholder="URL" ng-model="url" autocapitalize="none">
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="Usuario" ng-model="username" autocapitalize="none">
+          </label>
+
+          <label class="item item-input">
+              <input type="password" placeholder="Contraseña" ng-model="password">
+          </label>
+        </div>
+        <button class="button button-block button-calm" style="background: #1a4174" ng-click="login()">Iniciar Sesión</button>
+        </div>
+        <div ng-show="logged == true">
+
+        <div class=" " style="margin-top: 15vh">
+          <img src="img/kme-k.png">
+          <h2>Lector de Asistencia</h2>
+          <p>Escanea un código QR</p>
+        </div>
+        <div class="item">
+        <button class="button button-block button-positive" style="background: #1a4174" ng-click="leercodigo()">Escanear</button>
+        </div>
+        </div>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>

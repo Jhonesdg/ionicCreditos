@@ -1,0 +1,33 @@
+<link rel="stylesheet"  href="/static/css/login.css" >
+<div ng-show="!isregister">
+	<h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
+	<label for="inputEmail" class="sr-only">Correo Electronico</label>
+	<input type="email" ng-model="username" id="inputEmail" class="form-control" placeholder="Correo Electronico" required="" autofocus="">
+	<label for="inputPassword" class="sr-only">Clave</label>
+	<input type="password" id="inputPassword" ng-model="password" class="form-control" placeholder="Clave" required="">
+
+	<button ng-click="login()" class="btn btn-lg btn-primary btn-block" >Iniciar sesión</button>
+	<br>
+    <a class="link-custom" ng-click="seeRegister()">Registrese aqui</a>
+	<p class="mt-5 mb-3 text-muted">© Useit Web Derechos reservados</p>
+</div>
+
+
+<div ng-show="isregister">
+    <form name="register">
+	<h1 class="h3 mb-3 font-weight-normal">Registro</h1>
+	<label  class="sr-only">Correo Electronico</label>
+	<input type="email" ng-model="regisrterclient.email"  class="form-control" placeholder="Correo Electronico" required="" autofocus="">
+	<label class="sr-only">Contraseña</label>
+	<input type="password"  ng-model="regisrterclient.password" class="form-control" placeholder="Clave" required="">
+	<label class="sr-only">Primer Nombre</label>
+	<input type="input"  ng-model="regisrterclient.first_name" class="form-control" placeholder="Primer nombre" required="">
+	<label class="sr-only">Apellidos</label>
+	<input type="input"  ng-model="regisrterclient.last_name" class="form-control" placeholder="Apellido" required="">
+	<button ng-disabled="register.$invalid" ng-click="registeruser()" class="btn btn-lg btn-primary btn-block" >Registrarse</button>
+	<br>
+
+	    <a class="link-custom" ng-click="seeRegister()">Login</a>
+	<p class="mt-5 mb-3 text-muted">© Useit Web Derechos reservados</p>
+        </form>
+</div>
